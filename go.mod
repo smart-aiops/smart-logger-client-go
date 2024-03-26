@@ -1,4 +1,4 @@
-module github.com/cooper190113/smart-logger-client-go
+module github.com/smart-aiops/smart-logger-client-go
 
 go 1.19
 
