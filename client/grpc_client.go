@@ -2,7 +2,7 @@ package client
 
 import (
 	"fmt"
-	"github.com/cooper190113/smart-logger-client-go/proto"
+	"github.com/smart-aiops/smart-logger-client-go/proto"
 	"github.com/toolkits/pkg/logger"
 	"google.golang.org/grpc"
 )
