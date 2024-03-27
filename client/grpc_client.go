@@ -19,12 +19,10 @@ func NewGrpcClient(ip string, port int) (*GrpcClient, error) {
 		return nil, errors.New("connect gPRC server failed")
 	}
 
-	grpcClient := &GrpcClient{
+	return &GrpcClient{
 		client: proto.NewTransferServiceClient(conn),
 		conn:   conn,
-	}
-
-	return grpcClient, nil
+	}, nil
 }
 
 func (g *GrpcClient) Send(data proto.RawData) (*proto.Response, error) {
