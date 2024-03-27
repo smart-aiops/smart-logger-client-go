@@ -16,7 +16,8 @@ message RawData {
   string  respBody = 11; //方法响应参数
   int64   costTime = 12; //整个方法内部耗时
   int64   logDate = 13;  //Log产生时间,LogData对象初始化的时间
-  bool    success = 14;   //执行状态,成功(true)/异常(false)
+  bool    success = 14;  //执行状态,成功(true)/异常(false)
+  string  account = 15;  //操作用户名
 }
 
 message Response {

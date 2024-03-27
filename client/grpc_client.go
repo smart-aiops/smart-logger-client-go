@@ -1,24 +1,37 @@
 package client
 
 import (
+	"errors"
 	"fmt"
 	"github.com/smart-aiops/smart-logger-client-go/proto"
-	"github.com/toolkits/pkg/logger"
 	"google.golang.org/grpc"
 )
 
-var GrpcClient proto.TransferServiceClient
+type GrpcClient struct {
+	client proto.TransferServiceClient
+	conn   *grpc.ClientConn
+}
 
-// Init grpc server ip and port
-func Init(ip string, port int) (func(), error) {
+func NewGrpcClient(ip string, port int) (*GrpcClient, error) {
 	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", ip, port), grpc.WithInsecure())
 	if err != nil {
-		logger.Errorf("connect gPRC server failed, err: %v", err)
+		return nil, errors.New("connect gPRC server failed")
 	}
 
-	GrpcClient = proto.NewTransferServiceClient(conn)
+	grpcClient := &GrpcClient{
+		client: proto.NewTransferServiceClient(conn),
+		conn:   conn,
+	}
+
+	return grpcClient, nil
+}
+
+func (g *GrpcClient) transfer(data proto.RawData) {
+	g.transfer(data)
+}
+
+func (g *GrpcClient) destroy() func() {
 	return func() {
-		logger.Errorf("GrpcClient exiting")
-		conn.Close()
-	}, nil
+		g.conn.Close()
+	}
 }
