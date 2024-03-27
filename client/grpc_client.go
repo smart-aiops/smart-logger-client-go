@@ -1,6 +1,7 @@
 package client
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"github.com/smart-aiops/smart-logger-client-go/proto"
@@ -26,12 +27,20 @@ func NewGrpcClient(ip string, port int) (*GrpcClient, error) {
 	return grpcClient, nil
 }
 
-func (g *GrpcClient) transfer(data proto.RawData) {
-	g.transfer(data)
+func (g *GrpcClient) Send(data proto.RawData) (*proto.Response, error) {
+	response, err := g.client.Transfer(context.Background(), &data)
+	if err != nil {
+		fmt.Printf("grpc send data failed, err: %v", err)
+		return nil, errors.New("grpc send data failed")
+	}
+	return response, nil
 }
 
-func (g *GrpcClient) destroy() func() {
-	return func() {
-		g.conn.Close()
+func (g *GrpcClient) Destroy() func() {
+	if g.conn != nil {
+		return func() {
+			g.conn.Close()
+		}
 	}
+	return func() {}
 }
