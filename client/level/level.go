@@ -1,4 +1,4 @@
-package client
+package level
 
 type Level int
 
@@ -9,3 +9,7 @@ const (
 	Medium               // Index = 3
 	High                 // Index = 4
 )
+
+func (w Level) EnumIndex() int {
+	return int(w)
+}
