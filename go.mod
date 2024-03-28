@@ -3,7 +3,6 @@ module github.com/smart-aiops/smart-logger-client-go
 go 1.19
 
 require (
-	github.com/toolkits/pkg v1.3.7
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.33.0
 )
