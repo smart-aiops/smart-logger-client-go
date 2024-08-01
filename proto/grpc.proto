@@ -4,21 +4,22 @@ package proto;
 
 message RawData {
   string  appName = 1;   //应用名称
-  string  host = 2;      //主机
-  int64   port = 3;      //端口号
-  string  clientIp = 4;  //请求客户端的Ip
-  string  reqUrl = 5;    //请求地址
-  string  headers = 6;   //请求头部信息(可选择获取) 默认获取user-agent,content-type
-  string  tag = 7;       //操作标签,默认值undefined
-  string  content = 8;   //方法步骤内容,默认是空,可使用LogData.step进行内容步骤记录, 当前只支持java sdk
-  string  method = 9;    //请求的本地方法
-  string  args = 10;     //方法请求参数
-  string  respBody = 11; //方法响应参数
-  int64   costTime = 12; //整个方法内部耗时
-  int64   logDate = 13;  //Log产生时间,LogData对象初始化的时间
-  bool    success = 14;  //执行状态,成功(true)/异常(false)
-  string  account = 15;  //操作用户名
-  int64   level = 16;    //日志级别 0 一般 1 低危 2 中危 3 高危
+  string  vendor = 2;   //厂商
+  string  host = 3;      //主机
+  int64   port = 4;      //端口号
+  string  clientIp = 5;  //请求客户端的Ip
+  string  reqUrl = 6;    //请求地址
+  string  headers = 7;   //请求头部信息(可选择获取) 默认获取user-agent,content-type
+  string  tag = 8;       //操作标签,默认值undefined
+  string  content = 9;   //方法步骤内容,默认是空,可使用LogData.step进行内容步骤记录, 当前只支持java sdk
+  string  method = 10;    //请求的本地方法
+  string  args = 11;     //方法请求参数
+  string  respBody = 12; //方法响应参数
+  int64   costTime = 13; //整个方法内部耗时
+  int64   logDate = 14;  //Log产生时间,LogData对象初始化的时间
+  bool    success = 15;  //执行状态,成功(true)/异常(false)
+  string  account = 16;  //操作用户名
+  int64   level = 17;    //日志级别 0 一般 1 低危 2 中危 3 高危
 }
 
 message Response {
