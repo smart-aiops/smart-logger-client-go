@@ -1,6 +1,6 @@
 module github.com/smart-aiops/smart-logger-client-go
 
-go 1.19
+go 1.22
 
 require (
 	google.golang.org/grpc v1.62.1
