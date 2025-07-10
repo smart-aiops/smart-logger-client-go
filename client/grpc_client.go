@@ -14,7 +14,8 @@ type GrpcClient struct {
 }
 
 func NewGrpcClient(ip string, port int) (*GrpcClient, error) {
-	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", ip, port), grpc.WithInsecure())
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", ip, port), grpc.WithInsecure(),
+		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(1024*1024*20), grpc.MaxCallSendMsgSize(1024*1024*20)))
 	if err != nil {
 		return nil, errors.New("connect gPRC server failed")
 	}
